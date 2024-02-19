@@ -1,0 +1,9 @@
+package com.RSstudies.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.RSstudies.models.Account;
+
+public interface AccountRepository extends JpaRepository<Account, Integer> {
+
+}

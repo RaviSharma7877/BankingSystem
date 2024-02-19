@@ -1,0 +1,7 @@
+package com.RSstudies.Services;
+
+import com.RSstudies.models.Users;
+
+public interface AuthService {
+	Users signUp(Users user)
+}

@@ -1,0 +1,13 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import com.RSstudies.models.Account;
+
+public interface AccountService {
+	void createAccount(Account account);
+	void updateAccount(Account account);
+	void deleteAccount(Account account);
+	Account getAccountById(int coountId);
+	List<Account> getAllAccount();
+}

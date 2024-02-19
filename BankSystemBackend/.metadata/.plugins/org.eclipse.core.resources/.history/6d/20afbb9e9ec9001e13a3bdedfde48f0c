@@ -1,0 +1,9 @@
+package com.RSstudies.Services;
+
+import com.RSstudies.models.Account;
+
+public interface TransactionService {
+	String deposit(Account account, double amount);
+	String withdraw(Account account, double amount);
+	String transfer(Account fromAccount, Account toAccount, double amount);
+}

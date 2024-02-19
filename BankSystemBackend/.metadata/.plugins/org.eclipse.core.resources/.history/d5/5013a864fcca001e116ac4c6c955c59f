@@ -1,0 +1,34 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Transaction;
+
+public class TransactionServiceImpl implements TransactionService {
+
+	@Override
+	public String deposit(Account account, double amount) {
+		// TODO Auto-generated method stub
+return null;
+	}
+
+	@Override
+	public String withdraw(Account account, double amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String transfer(Account fromAccount, Account toAccount, double amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public List<Transaction> getAllTransaction() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

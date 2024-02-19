@@ -1,0 +1,13 @@
+package com.RSstudies.Repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Users;
+
+public interface UserRepository extends JpaRepository<Users, Integer> {
+	Users findByEmailAndPassword(String email, String password);
+}
+

@@ -1,0 +1,40 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.RSstudies.Repository.LoanRepository;
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Loan;
+@Service
+public class LoanServiceImpl implements LoanService {
+	
+	@Autowired
+	private LoanRepository loanRepo;
+
+	@Override
+	public String applyLoan(int accountId, double amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updateLoanStatus(Loan loan) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Loan> getLoans(Account account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Loan> getAllLoans() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

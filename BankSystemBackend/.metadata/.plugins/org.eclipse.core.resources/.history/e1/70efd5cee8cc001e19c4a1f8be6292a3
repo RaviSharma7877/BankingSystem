@@ -1,0 +1,30 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.RSstudies.Repository.ActivityRepository;
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Activity;
+
+@Service
+public class ActivityServiceImpl implements ActivityService {
+	
+	@Autowired
+	private ActivityRepository activityRepo;
+
+	@Override
+	public void logActivity(Account account, String actionType, String actionDescription) {
+		Activity act = activityRepo.saveActivity(account, actionType, actionDescription);
+
+	}
+
+	@Override
+	public List<Activity> getActivities(Account account) {
+		// TODO Auto-generated method stub
+		return activityRepo.findAll();
+	}
+
+}

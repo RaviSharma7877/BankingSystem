@@ -1,0 +1,12 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import com.RSstudies.Exceptions.InvalidLoanAmountException;
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Payee;
+
+public interface PayeeService {
+	String addPayee(String accountNumber, double amount) throws InvalidLoanAmountException;
+	Payee getPayee(Account account);
+}

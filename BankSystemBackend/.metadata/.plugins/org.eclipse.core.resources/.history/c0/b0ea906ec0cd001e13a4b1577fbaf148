@@ -1,0 +1,17 @@
+package com.RSstudies.webSocket;
+
+import jakarta.websocket.server.ServerContainer;
+import jakarta.websocket.server.ServerEndpointConfig;
+import jakarta.websocket.DeploymentException;
+
+public class WebSocketInitializer {
+    public static void initialize() {
+        ServerContainer container = WebSocketServerContainerInitializer.configureContext(ServletContext);
+        try {
+            container.addEndpoint(ServerEndpointConfig.Builder.create(MyWebSocketEndpoint.class, "/mywebsocket").build());
+        } catch (DeploymentException e) {
+            e.printStackTrace();
+        }
+    }
+}
+

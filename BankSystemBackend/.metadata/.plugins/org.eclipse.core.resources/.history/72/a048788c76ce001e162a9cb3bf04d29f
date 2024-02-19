@@ -1,0 +1,12 @@
+package com.RSstudies.Repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.RSstudies.models.Account;
+
+public interface AccountRepository extends JpaRepository<Account, Integer> {
+	boolean findByAccountNumber(String account);
+
+}

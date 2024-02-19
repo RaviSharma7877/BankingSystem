@@ -1,0 +1,45 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.RSstudies.Exceptions.NoDataFoundException;
+import com.RSstudies.Repository.UserRepository;
+import com.RSstudies.models.Users;
+
+public class UsersServiceImpl implements UsersService {
+	
+	@Autowired
+	private UserRepository userRepo;
+
+	@Override
+	public Users addUser(Users user) {
+		// TODO Auto-generated method stub
+		return userRepo.save(user);
+	}
+
+	@Override
+	public Users updateUserDetails(int userId, String accountStatus) {
+		Users user = userRepo.findById(userId).orElseThrow();
+		return user;
+	}
+	@Override
+	public Users getUserByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Users> getAllUsers() {
+		// TODO Auto-generated method stub
+		return userRepo.findAll();
+	}
+
+	@Override
+	public String deleteUser(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

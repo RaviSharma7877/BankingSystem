@@ -1,0 +1,28 @@
+package com.RSstudies.webSocket;
+
+import jakarta.websocket.Endpoint;
+import jakarta.websocket.EndpointConfig;
+import jakarta.websocket.MessageHandler;
+import jakarta.websocket.Session;
+import java.io.IOException;
+
+public class MyWebSocketEndpoint extends Endpoint {
+    @Override
+    public void onOpen(Session session, EndpointConfig config) {
+        session.addMessageHandler(new MessageHandler.Whole<String>() {
+            @Override
+            public void onMessage(String message) {
+                // Handle incoming messages
+                System.out.println("Received message: " + message);
+
+                try {
+                    // Send a message back to the client
+                    session.getBasicRemote().sendText("Message received: " + message);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+}
+

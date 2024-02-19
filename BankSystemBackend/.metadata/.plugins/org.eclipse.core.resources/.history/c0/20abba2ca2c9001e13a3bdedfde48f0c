@@ -1,0 +1,39 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Loan;
+
+public class LoanServiceImpl implements LoanService {
+
+	@Override
+	public String applyLoan(Account account, double amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String approveLoan(Loan loan) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String rejectLoan(Loan loan) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Loan> getLoans(Account account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Loan> getAllLoans() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

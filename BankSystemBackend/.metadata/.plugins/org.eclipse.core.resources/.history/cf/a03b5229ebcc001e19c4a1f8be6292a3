@@ -1,0 +1,50 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.RSstudies.Repository.AccountRepository;
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Transaction;
+@Service
+public class TransactionServiceImpl implements TransactionService {
+	
+	@Autowired
+	private AccountRepository accountRepo;
+
+	@Override
+	public String deposit(Account account, double amount) {
+		Account acc = accountRepo.findById(account.getAccountId()).orElseThrow();
+		double balance = acc.getBalance()+amount;
+		acc.setBalance(balance);
+return "Amount deposit successfully";
+	}
+
+	@Override
+	public String withdraw(Account account, double amount) {
+		Account acc = accountRepo.findById(account.getAccountId()).orElseThrow();
+		double balance = acc.getBalance();
+		if(balance > amount) {
+			balance -= amount;
+			acc.setBalance(balance);
+			return "Amount deposit successfully";
+		}
+		acc.setBalance(balance);
+return "You dont have sufficient amount";
+	}
+
+	@Override
+	public String transfer(Account fromAccount, Account toAccount, double amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public List<Transaction> getAllTransaction() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

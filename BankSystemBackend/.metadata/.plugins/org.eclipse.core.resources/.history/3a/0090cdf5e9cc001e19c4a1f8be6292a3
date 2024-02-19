@@ -1,0 +1,36 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Payee;
+@Service
+public class PayeeServiceImpl implements PayeeService {
+
+	@Override
+	public String addPayee(Account account, Payee payee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String removePayee(Account account, Payee payee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updatePayee(Account account, Payee payee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Payee> getPayee(Account account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

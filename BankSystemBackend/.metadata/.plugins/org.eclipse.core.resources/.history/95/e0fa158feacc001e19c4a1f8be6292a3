@@ -1,0 +1,70 @@
+package com.RSstudies.Services;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.RSstudies.Repository.AccountRepository;
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Payee;
+@Service
+public class PayeeServiceImpl implements PayeeService {
+	
+	@Autowired
+	private AccountRepository accountRepo;
+
+	@Override
+	public String addPayee(Account account, Payee payee) {
+		Account acc = accountRepo.findById(account.getAccountId()).orElseThrow();
+		
+		acc.getPayees().add(payee);
+	    
+	    // Update the account in the database
+		accountRepo.save(acc);
+	    
+	    return "Payee added successfully";
+	}
+
+	@Override
+	public String removePayee(Account account, Payee payee) {
+Account acc = accountRepo.findById(account.getAccountId()).orElseThrow();
+		
+		acc.getPayees().remove(payee);
+	    
+	    // Update the account in the database
+		accountRepo.save(acc);
+	    
+	    return "Payee removed successfully";
+	}
+
+	@Override
+	public String updatePayee(Account account, Payee payee) {
+	    // Find the payee in the account's list of payees
+	    for (Payee existingPayee : account.getPayees()) {
+	        if (existingPayee.getPayeeId() == payee.getPayeeId()) {
+	            // Update the payee details
+	            existingPayee.setAccountName(payee.getAccountName());
+	            existingPayee.setAccountNumber(payee.getAccountNumber());
+	            existingPayee.setUpdatedAt(LocalDateTime.now());
+	            // Update any other payee details as needed
+	            
+	            // Update the account in the database
+	            accountRepo.save(account);
+	            
+	            return "Payee updated successfully";
+	        }
+	    }
+	    
+	    return "Payee not found";
+	}
+
+
+	@Override
+	public List<Payee> getPayee(Account account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

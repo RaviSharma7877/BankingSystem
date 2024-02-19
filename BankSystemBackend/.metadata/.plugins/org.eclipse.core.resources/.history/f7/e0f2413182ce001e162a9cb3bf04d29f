@@ -1,0 +1,45 @@
+package com.RSstudies.Services;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.RSstudies.Repository.AccountRepository;
+import com.RSstudies.Repository.PayeeRepository;
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Payee;
+@Service
+public class PayeeServiceImpl implements PayeeService {
+	
+	@Autowired
+	private AccountRepository accountRepo;
+	
+	@Autowired
+	private PayeeRepository payeeRepo;
+
+	@Override
+	public String addPayee(String accountNumber, double amount) {
+		Account acc = accountRepo.findByAccountNumber(accountNumber).orElseThrow();
+		
+		double balance = acc.getBalance()-amount;
+	    
+		
+		Payee pay = new Payee();
+		pay.setAccount(acc);
+		pay.setAmount(amount);
+	    // Update the account in the database
+		payeeRepo.save(pay);
+	    
+	    return "Payee added successfully";
+	}
+
+
+	@Override
+	public List<Payee> getPayee(Account account) {
+		Account acc = accountRepo.findById(account.getAccountId()).orElseThrow();
+		return acc.getPayees();
+	}
+
+}

@@ -1,0 +1,45 @@
+package com.RSstudies.Services;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.RSstudies.Repository.UserRepository;
+import com.RSstudies.models.Users;
+
+
+
+
+@Service
+public class ManualUserDetailsService implements UserDetailsService {
+	
+	
+	@Autowired
+	private UserRepository uRepo;
+	
+	
+
+	public ManualUserDetailsService(UserRepository uRepo) {
+        this.uRepo = uRepo;
+    }
+
+
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Optional<Users> optional = uRepo.findByUserName(username);
+		if(!optional.isPresent())
+			throw new BadCredentialsException("User not found with email "+username);
+		
+		Users customer = optional.get();
+//		return new User(customer.getUsername(), customer.getPassword(), null);
+		return new ManualUserDetails(customer);
+	}
+
+}
+

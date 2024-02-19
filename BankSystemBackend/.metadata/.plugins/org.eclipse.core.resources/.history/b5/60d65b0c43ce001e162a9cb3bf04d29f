@@ -1,0 +1,31 @@
+package com.RSstudies.Services;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.RSstudies.Repository.UserRepository;
+import com.RSstudies.models.Role;
+import com.RSstudies.models.Users;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class AuthServiceImpl implements AuthService {
+
+	private final UserRepository userRepo;
+	
+	private final PasswordEncoder passwordEncoder;
+	
+	public Users signUp(Users user) {
+		Users usrs = new Users();
+		usrs.setEmail(user.getEmail());
+		usrs.setFirstName(user.getFirstName());
+		usrs.setLastName(user.getLastName());
+		usrs.setUserName(user.getUsername());
+		usrs.setRole(Role.USER);
+		usrs.setPassword(passwordEncoder.encode(user.getPassword()));
+		
+		return usrs;
+	}
+}

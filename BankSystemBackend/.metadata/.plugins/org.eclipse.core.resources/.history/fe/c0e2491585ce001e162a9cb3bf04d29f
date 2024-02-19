@@ -1,0 +1,11 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Payee;
+
+public interface PayeeService {
+	String addPayee(String accountNumber, double amount);
+	Payee getPayee(Account account);
+}

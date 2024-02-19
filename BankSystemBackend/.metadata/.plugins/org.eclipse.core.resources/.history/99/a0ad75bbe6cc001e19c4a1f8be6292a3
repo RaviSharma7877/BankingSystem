@@ -1,0 +1,25 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Activity;
+
+@Service
+public class ActivityServiceImpl implements ActivityService {
+
+	@Override
+	public void logActivity(Account account, String actionType, String actionDescription) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Activity> getActivities(Account account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

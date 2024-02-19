@@ -1,0 +1,5 @@
+package com.RSstudies.Exceptions;
+
+public class GlobalExceptionHandller {
+
+}

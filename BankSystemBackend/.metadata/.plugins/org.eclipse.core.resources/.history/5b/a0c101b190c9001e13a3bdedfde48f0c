@@ -1,0 +1,33 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+
+import com.RSstudies.models.Users;
+
+public class UsersServiceImpl implements UsersService {
+
+	@Override
+	public String addUser(Users user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Users updateUserDetails(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Users> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteUser(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

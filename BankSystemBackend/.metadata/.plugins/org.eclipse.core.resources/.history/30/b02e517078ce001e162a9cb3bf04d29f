@@ -1,0 +1,59 @@
+package com.RSstudies.Services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.RSstudies.Exceptions.NoDataFoundException;
+import com.RSstudies.Repository.AccountRepository;
+import com.RSstudies.Repository.UserRepository;
+import com.RSstudies.models.Account;
+import com.RSstudies.models.Users;
+
+@Service
+public class AccountServiceImpl implements AccountService {
+	
+	@Autowired
+	private AccountRepository accountRepo;
+	
+	@Autowired
+	private UsersService userService;
+	
+
+	@Override
+	public Account createAccount(Account account) throws NoDataFoundException {
+		// TODO Auto-generated method stub
+		
+		Account acc = accountRepo.findByAccountNumber(account.getAccountNumber()).orElseThrow(() -> new NoDataFoundException("User does not exists with id: " + userId));
+		
+		return accountRepo.save(account);
+	}
+	@Override
+	public List<Account> getAllAccount() {
+		// TODO Auto-generated method stub
+		return accountRepo.findAll();
+	}
+
+	@Override
+	public String updateAccountStatus(int accountId, String status) {
+		Account acc = accountRepo.findById(accountId).orElseThrow();
+		acc.setStatus(status);
+		return "Account status updated successfully";
+	}
+
+	@Override
+	public String deleteAccount(int accountId) {
+		Account acc = accountRepo.findById(accountId).orElseThrow();
+		accountRepo.delete(acc);
+		return "Account deleted successfully";
+	}
+
+	@Override
+	public Account getAccountById(int accountId) {
+		Account acc = accountRepo.findById(accountId).orElseThrow();
+		return acc;
+	}
+
+}

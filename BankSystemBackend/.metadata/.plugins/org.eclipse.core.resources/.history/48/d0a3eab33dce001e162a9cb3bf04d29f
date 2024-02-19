@@ -1,0 +1,15 @@
+package com.RSstudies.Services;
+
+import java.util.Date;
+
+import org.springframework.security.core.userdetails.UserDetails;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
+public interface JWTService {
+	 String generateToken(UserDetails userDetails);
+	 boolean isTokenValid(String token, UserDetails userDetails)
+     String extractUserName(String token);
+}

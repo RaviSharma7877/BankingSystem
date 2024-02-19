@@ -1,0 +1,51 @@
+package com.RSstudies.models;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import lombok.Data;
+
+@Entity
+@Data
+public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int accountId;
+    
+    @ManyToOne
+    private Users user;
+    
+    @OneToMany(mappedBy = "account")
+    private List<Loan> loans;
+    
+    @OneToMany(mappedBy = "account")
+    private List<Payee> payees;
+    
+    @OneToMany(mappedBy = "account")
+    private List<Transaction> transactions;
+    
+//    @Pattern(regexp = "\\d{16}", message = "Account number must be 16 digits long")
+//    @GeneratedValue(strategy = GenerationType.TABLE, generator = "account_number_generator")
+//    @TableGenerator(name = "account_number_generator", table = "id_generator", pkColumnName = "id_key", pkColumnValue = "account_number", valueColumnName = "id_value")
+//    private String accountNumber;
+    
+    @GeneratedValue(generator = "custom_account_number_generator")
+    @GenericGenerator(name = "custom_account_number_generator", strategy = "com.RSstudies.models.CustomAccountNumberGenerator")
+    @Column(unique = true)
+    private String accountNumber;
+    
+    private double balance;
+    private String type;
+    private String status;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+}
